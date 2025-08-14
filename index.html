@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Swachitha Amrutham · DevOps & Software Engineer</title>
+  <meta name="description" content="Portfolio of Swachitha Amrutham — DevOps & Software Engineer specializing in cloud‑native architectures, CI/CD automation, containers, and SRE." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fafaf9; --panel:#ffffff; --ink:#0f172a; --muted:#475569; --line:#e5e7eb; --accent:#0a84ff; --accent-2:#0ea5e9; --radius:18px; --shadow: 0 6px 28px rgba(15,23,42,.08);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b1220; --panel:#0e1626; --ink:#f1f5f9; --muted:#93a4b8; --line:#1e293b; --shadow:0 10px 30px rgba(2,6,23,.55); }
+      header .avatar{ box-shadow: 0 0 0 6px rgba(14,22,38,.8); }
+    }
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    html{ scroll-behavior:smooth }
+    body{ margin:0; font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--ink); line-height:1.6 }
+    a{ color:var(--accent); text-decoration:none }
+    a:hover{ text-decoration:underline }
+
+    /* Layout */
+    .wrap{ display:grid; grid-template-columns: 280px 1fr; gap:32px; width:min(1200px,95vw); margin-inline:auto; padding:24px; }
+    @media (max-width: 860px){ .wrap{ grid-template-columns: 1fr; padding:16px; } }
+
+    /* Sidebar */
+    aside{ position:sticky; top:16px; height:fit-content; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px }
+    header .name{ font-family: Fraunces, serif; font-size:1.8rem; line-height:1.1; margin:14px 0 4px }
+    header .role{ color:var(--muted); font-weight:600; margin-bottom:10px }
+    .avatar{ width:120px; height:120px; border-radius:50%; object-fit:cover; display:block; box-shadow:0 0 0 6px #fff; }
+    .quick{ display:grid; gap:8px; margin-top:14px }
+    .quick a{ display:flex; align-items:center; gap:10px; font-weight:600; color:var(--ink) }
+    .quick a .dot{ width:8px; height:8px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:inline-block }
+    .cta{ margin-top:16px }
+    .btn{ display:inline-block; padding:10px 14px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; border-radius:12px; font-weight:800; letter-spacing:.2px; box-shadow:var(--shadow); border:0 }
+    .btn:hover{ filter:brightness(1.03); text-decoration:none }
+    nav ul{ list-style:none; padding:0; margin:18px 0 0; display:grid; gap:8px }
+    nav a{ display:block; padding:10px 12px; border-radius:10px; color:var(--muted); font-weight:700 }
+    nav a:hover{ background:rgba(2,132,199,.08); color:var(--ink); text-decoration:none }
+
+    /* Main */
+    main{ display:grid; gap:26px }
+    section{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px }
+    .section-title{ font-family: Fraunces, serif; font-size: clamp(1.2rem, 1.4vw + .9rem, 2rem); margin:0 0 6px }
+    .section-desc{ color:var(--muted); margin:0 0 14px }
+
+    /* Hero band */
+    .hero{ background:linear-gradient(180deg, rgba(10,132,255,.08), transparent 60%), var(--panel) }
+    .hero h1{ font-family: Fraunces, serif; font-size: clamp(1.8rem, 2.2vw + 1rem, 3rem); margin:6px 0 }
+    .hero .sub{ color:var(--muted); max-width:70ch }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px }
+    .chip{ padding:6px 10px; border-radius:999px; border:1px solid var(--line); background:#fff; color:#0f172a; font-weight:700; font-size:.85rem }
+    @media (prefers-color-scheme: dark){ .chip{ background:#0b1220; color:#e2e8f0; } }
+
+    /* Projects */
+    .projects{ display:grid; grid-template-columns: repeat(3, 1fr); gap:18px }
+    @media (max-width: 1020px){ .projects{ grid-template-columns: repeat(2, 1fr) } }
+    @media (max-width: 640px){ .projects{ grid-template-columns: 1fr } }
+    .project{ border:1px solid var(--line); border-radius:16px; overflow:hidden; display:grid; grid-template-rows: 160px auto; background:#fff }
+    @media (prefers-color-scheme: dark){ .project{ background:#0b1220 } }
+    .project img{ width:100%; height:100%; object-fit:cover }
+    .project .pad{ padding:14px }
+    .project h3{ margin:0 0 6px; font-size:1.05rem }
+    .meta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px }
+    .tag{ font-size:.78rem; padding:5px 9px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-weight:700 }
+
+    /* Timeline */
+    .timeline{ display:grid; gap:12px }
+    .job{ border:1px dashed var(--line); border-radius:14px; padding:14px }
+    .job h3{ margin:0 0 2px; font-size:1rem }
+    .period{ color:var(--muted); font-weight:700 }
+    .job p{ margin:6px 0 0; color:var(--muted) }
+
+    /* Skills grid */
+    .skills{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px }
+    @media (max-width: 900px){ .skills{ grid-template-columns: repeat(2, 1fr) } }
+    @media (max-width: 560px){ .skills{ grid-template-columns: 1fr } }
+    .skill{ padding:14px; border:1px solid var(--line); border-radius:12px; background:#fff }
+    @media (prefers-color-scheme: dark){ .skill{ background:#0b1220 } }
+    .skill strong{ display:block; margin-bottom:4px }
+
+    /* Contact */
+    form{ display:grid; gap:12px }
+    label{ font-weight:700; font-size:.9rem }
+    input, textarea{ width:100%; padding:12px 14px; border-radius:12px; background:#fff; border:1px solid var(--line); color:var(--ink) }
+    textarea{ min-height:120px; resize:vertical }
+
+    /* Footer */
+    footer{ text-align:center; color:var(--muted); padding:30px 0 50px }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <aside>
+      <header>
+        <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="Portrait placeholder" />
+        <div class="name">Swachitha Amrutham</div>
+        <div class="role">DevOps & Software Engineer</div>
+        <div class="quick">
+          <a href="mailto:amruthamswachitha@gmail.com"><span class="dot"></span> amruthamswachitha@gmail.com</a>
+          <a href="tel:+18172177235"><span class="dot"></span> +1 (817) 217‑7235</a>
+          <a href="#" id="linkedin"><span class="dot"></span> linkedin.com/in/swachitha-amrutham</a>
+        </div>
+        <div class="cta">
+          <a class="btn" href="resume.pdf" download>Download Résumé</a>
+        </div>
+      </header>
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="hero" id="about">
+        <h1>Cloud‑first. Automation‑obsessed. Reliability‑driven.</h1>
+        <p class="sub">I build and operate cloud‑native platforms with IaC, resilient CI/CD, and deep observability. Comfortable across <strong>AWS</strong> and <strong>Azure</strong>, containers with <strong>Docker/Kubernetes</strong>, and automation via <strong>Terraform</strong>, <strong>Ansible</strong>, <strong>Jenkins</strong>, and <strong>GitLab CI</strong>. I write production code in <strong>Python</strong>, <strong>Java</strong>, and <strong>Node.js</strong>.</p>
+        <div class="chips">
+          <span class="chip">AWS • Azure</span>
+          <span class="chip">Kubernetes • Docker • Helm</span>
+          <span class="chip">Terraform • Ansible</span>
+          <span class="chip">Jenkins • GitLab CI • Maven</span>
+          <span class="chip">Prometheus • Grafana • Datadog</span>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-desc">A quick tour of builds aligned with your resume.</p>
+        <div class="projects">
+          <article class="project">
+            <div class="pad">
+              <h3>Real‑Time Chat App with Auto‑Scaling</h3>
+              <p>Live messaging via <strong>WebSockets</strong> on <strong>Node.js</strong>, containerized with <strong>Docker</strong>, orchestrated via <strong>Kubernetes</strong> with <strong>Helm</strong> and NGINX ingress; metrics exported to <strong>Prometheus</strong> with <strong>Grafana</strong> boards.</p>
+              <div class="meta"><span class="tag">Node.js</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Helm</span></div>
+            </div>
+          </article>
+          <article class="project">
+  
+            <div class="pad">
+              <h3>E‑commerce Price Tracker & Notifier</h3>
+              <p>Python/Flask tracker with scheduled scrapers, <strong>SQLite</strong> persistence, and email alerts via <strong>AWS SES</strong>; deployed on <strong>EC2</strong> behind ALB with TLS.</p>
+              <div class="meta"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">AWS</span></div>
+            </div>
+          </article>
+          <article class="project">
+                        <div class="pad">
+              <h3>Online Examination System</h3>
+              <p>Secure assessments with <strong>Django</strong> and <strong>PostgreSQL</strong>, hosted on <strong>AWS EC2</strong>, hardened with TLS, RBAC admin features, and audit logs shipped to <strong>CloudWatch</strong>.</p>
+              <div class="meta"><span class="tag">Django</span><span class="tag">PostgreSQL</span><span class="tag">EC2</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-desc">Highlights aligned to DevOps & Cloud.</p>
+        <div class="timeline">
+          <div class="job">
+            <h3>Software Engineer — DevOps · Molina Healthcare</h3>
+            <div class="period">Jan 2024 – Dec 2024</div>
+            <p>Built secure APIs (<strong>Node</strong>, <strong>Python</strong>, <strong>Java</strong>) and <strong>Spring Boot</strong> microservices with <strong>RabbitMQ</strong>; HIPAA‑compliant data integrations; NLP pipelines for clinical notes; automated cloud provisioning and CI/CD.</p>
+          </div>
+          <div class="job">
+            <h3>DevOps Engineer · Wipro</h3>
+            <div class="period">May 2020 – Aug 2023</div>
+            <p>End‑to‑end CI/CD with <strong>GitLab CI</strong> and <strong>Jenkins</strong>; IaC via <strong>Terraform</strong>/<strong>CloudFormation</strong>; container platforms with <strong>Kubernetes</strong>/<strong>Docker</strong>; monitoring with <strong>Grafana</strong>, <strong>Datadog</strong>, and <strong>CloudWatch</strong>.
+            </p>
+          </div>
+          <div class="job">
+            <h3>Cloud Engineer Intern · DatafactZ</h3>
+            <div class="period">May 2019 – Dec 2019</div>
+            <p>Azure infra (VMs, VNet, Load Balancer) with <strong>Azure DevOps Pipelines</strong>; security through <strong>NSGs</strong>, <strong>RBAC</strong>, and <strong>Key Vault</strong>; container pilots on <strong>AKS</strong>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills">
+          <div class="skill"><strong>Languages</strong>Python, Java, Bash, PowerShell</div>
+          <div class="skill"><strong>Cloud</strong>AWS (EC2, EKS, ECS, VPC, IAM, Lambda), Azure (VMs, VNet, AKS, Key Vault)</div>
+          <div class="skill"><strong>Containers</strong>Docker, Kubernetes, Helm</div>
+          <div class="skill"><strong>CI/CD & IaC</strong>Jenkins, GitLab CI, Maven, Terraform, Ansible</div>
+          <div class="skill"><strong>Monitoring & Logs</strong>Prometheus, Grafana, Datadog, CloudWatch, Splunk</div>
+          <div class="skill"><strong>Security & QA</strong>SonarQube, Trivy, TLS, IAM/RBAC</div>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2 class="section-title">Education & Certification</h2>
+        <div class="skills">
+          <div class="skill"><strong>M.S., Management Information Systems</strong>University of Illinois Springfield (2023–2024)</div>
+          <div class="skill"><strong>B.Com (Computers)</strong>Bharat Degree College for Women (2017–2020)</div>
+          <div class="skill"><strong>Certification</strong>AWS Certified Solutions Architect – Associate (valid through Feb 10, 2028)</div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-desc">Send a quick note or use the links in the sidebar.</p>
+        <form name="contact" netlify>
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="you@domain.com" required>
+          </div>
+          <div>
+            <label for="msg">Message</label>
+            <textarea id="msg" name="message" placeholder="How can I help?" required></textarea>
+          </div>
+          <div>
+            <button class="btn" type="submit">Send Message</button>
+          </div>
+        </form>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Swachitha Amrutham • All rights reserved.
+      </footer>
+    </main>
+  </div>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
